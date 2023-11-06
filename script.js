@@ -29,3 +29,14 @@ btnPopup.addEventListener('click',()=>{
 iconClose.addEventListener('click',()=>{
     wrapper.classList.remove('active-popup');
 });
+
+//Lưu thông tin vào Google Sheet
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxB15U7Kbo0aXM7zySVriG6WpOYDw_KcahhRkF0vPNTrIZ84BTGum0ptlIWr_RxJpvp/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
