@@ -48,6 +48,7 @@ header{
     margin-left: 40px;
 }
 
+/*Những cái nút trên header*/
 .navigation a::after 
 {
     content: '';
@@ -69,10 +70,11 @@ header{
     transform-origin: left;
 }
 
+/*Nút đăng nhập trên header*/
 .navigation .btnlogin_popup
 {
     width: 130px;
-    height: 50px;
+    height: 40px;
     background: transparent;
     border: solid 2px white;
     outline: none;
