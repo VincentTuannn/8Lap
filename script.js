@@ -30,40 +30,56 @@ iconClose.addEventListener('click',()=>{
     wrapper.classList.remove('active-popup');
 });
 
-//Lưu thông tin vào Google Sheet
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxB15U7Kbo0aXM7zySVriG6WpOYDw_KcahhRkF0vPNTrIZ84BTGum0ptlIWr_RxJpvp/exec'
-  const form = document.forms['submit-to-google-sheet']
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  })
 
-// Đăng ký sự kiện submit cho biểu mẫu
-  document.getElementById('registration-form').addEventListener('submit', function (event) {
-    event.preventDefault();
+ function register() {
+    // Lấy dữ liệu người dùng từ form
+    const username = document.getElementById("#username").value;
+    const email = document.getElementById("#email").value;
+    const password = document.getElementById("#password").value;
 
-    // Lấy giá trị từ các trường nhập liệu
-    var username = document.getElementById('username').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-
-    // Kiểm tra xem `localStorage` đã được hỗ trợ trong trình duyệt
-    if (typeof (Storage) !== 'undefined') {
-        // Lưu thông tin tài khoản vào `localStorage`
-        localStorage.setItem('username', username);
-        localStorage.setItem('username', email);
-        localStorage.setItem('password', password);
-
-        alert('Tài khoản đã được đăng ký thành công.');
-
-        // Xóa giá trị khỏi các trường nhập liệu
-        document.getElementById('username').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('password').value = '';
-    } else {
-        alert('Trình duyệt không hỗ trợ localStorage.');
+    // Kiểm tra dữ liệu người dùng
+    if (username === "" || email === "" || password === "") {
+        alert("Vui lòng nhập đầy đủ thông tin");
+        return;
     }
-});
+
+    // Lưu dữ liệu người dùng vào Local Storage
+    localStorage.setItem("username", username);
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+    
+
+    // Thông báo đăng ký thành công
+    alert("Đăng ký thành công");
+}
+
+// Tạo form đăng ký
+const signin = document.getElementById("signin");
+signin.addEventListener("submit", register);
+
+function login() {
+    // Lấy dữ liệu người dùng từ form
+    const username = document.getElementById("#username").value;
+    const password = document.getElementById("#password").value;
+
+    // Kiểm tra dữ liệu người dùng
+    if (username === "" || password === "") {
+        alert("Vui lòng nhập đầy đủ thông tin");
+        return;
+    }
+
+    // Lấy dữ liệu người dùng từ Local Storage
+    const storedUsername = localStorage.getItem("username");
+    const storedPassword = localStorage.getItem("password");
+
+    // So sánh dữ liệu người dùng
+    if (username === storedUsername && password === storedPassword) {
+        // Đăng nhập thành công
+        alert("Đăng nhập thành công");
+    } else {
+        // Đăng nhập thất bại
+        alert("Tài khoản hoặc mật khẩu không chính xác");
+    }
+}
+
