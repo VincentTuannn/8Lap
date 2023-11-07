@@ -340,6 +340,7 @@ header{
     justify-content: center;
     align-items: center;
     border-bottom-left-radius:20px; 
+    border-top-right-radius: 20px;
     cursor: pointer;
     z-index: 1;
 }
