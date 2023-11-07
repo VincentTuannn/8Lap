@@ -40,3 +40,30 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbxB15U7Kbo0aXM7zySVri
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
   })
+
+// Đăng ký sự kiện submit cho biểu mẫu
+  document.getElementById('registration-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Lấy giá trị từ các trường nhập liệu
+    var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    // Kiểm tra xem `localStorage` đã được hỗ trợ trong trình duyệt
+    if (typeof (Storage) !== 'undefined') {
+        // Lưu thông tin tài khoản vào `localStorage`
+        localStorage.setItem('username', username);
+        localStorage.setItem('username', email);
+        localStorage.setItem('password', password);
+
+        alert('Tài khoản đã được đăng ký thành công.');
+
+        // Xóa giá trị khỏi các trường nhập liệu
+        document.getElementById('username').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+    } else {
+        alert('Trình duyệt không hỗ trợ localStorage.');
+    }
+});
