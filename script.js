@@ -32,11 +32,11 @@ iconClose.addEventListener('click',()=>{
 
 
 
- function register() {
+ function signup() {
     // Lấy dữ liệu người dùng từ form
-    const username = document.getElementById("#username").value;
-    const email = document.getElementById("#email").value;
-    const password = document.getElementById("#password").value;
+    var username = document.getElementById("#username").value;
+    var email = document.getElementById("#email").value;
+    var password = document.getElementById("#password").value;
 
     // Kiểm tra dữ liệu người dùng
     if (username === "" || email === "" || password === "") {
@@ -55,7 +55,7 @@ iconClose.addEventListener('click',()=>{
 }
 
 // Tạo form đăng ký
-const signin = document.getElementById("signin");
+var signin = document.getElementById("signin");
 signin.addEventListener("submit", register);
 
 function login() {
