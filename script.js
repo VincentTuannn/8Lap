@@ -59,7 +59,6 @@ iconClose.addEventListener('click',()=>{
 
         // Lưu dữ liệu người dùng vào Local Storage
         localStorage.setItem("data", JSON.stringify(data));  
-        console.log(username.value);
      
         // Thông báo đăng ký thành công
         alert("Đăng ký thành công");
