@@ -34,12 +34,14 @@ iconClose.addEventListener('click',()=>{
 
 
 
- function signup() {
+ //localStorage cho trang đăng ký lưu thông tin
+
+    function signup() {
         // Lấy dữ liệu người dùng từ form
-        var username = document.getElementById("#username").value;
-        var email = document.getElementById("#email").value;
-        var password = document.getElementById("#password").value;
-        console.log(username);
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+       
 
 
         // Kiểm tra dữ liệu người dùng
@@ -57,6 +59,7 @@ iconClose.addEventListener('click',()=>{
 
         // Lưu dữ liệu người dùng vào Local Storage
         localStorage.setItem("data", JSON.stringify(data));  
+        console.log(username.value);
      
         // Thông báo đăng ký thành công
         alert("Đăng ký thành công");
