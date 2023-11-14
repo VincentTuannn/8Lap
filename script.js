@@ -1,10 +1,9 @@
 const wrapper=document.querySelector('.wrapper');
 const loginLink=document.querySelector('.login-link');
 const registerLink=document.querySelector('.register-link');
-const forgotLink=document.querySelector('.ForgotPass-link');
+const ForgotPassLink=document.querySelector('.ForgotPassword-link');
 const btnPopup=document.querySelector('.btnLogin-popup');
 const iconclose=document.querySelector('.icon-close');
-
 
 
 //Bấm vào để chuyển qua trang đăng ký
@@ -13,7 +12,7 @@ registerLink.addEventListener('click',()=>{
 });
 
 //Bấm vào để chuyển qua trang đổi mật khẩu
-forgotLink.addEventListener('click',()=>{
+ForgotPassLink.addEventListener('click',()=>{
     wrapper.classList.add('active');
 });
 
@@ -28,46 +27,47 @@ btnPopup.addEventListener('click',()=>{
 });
 
 //Bấm vào để tắt trang đăng nhập
-iconClose.addEventListener('click',()=>{
+iconclose.addEventListener('click',()=>{
     wrapper.classList.remove('active-popup');
 });
 
+//localStorage cho trang đăng ký lưu thông tin
+
+function signup() {
+    // Lấy dữ liệu người dùng từ form
+    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+   
 
 
- //localStorage cho trang đăng ký lưu thông tin
-
-    function signup() {
-        // Lấy dữ liệu người dùng từ form
-        var username = document.getElementById("username").value;
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-       
-
-
-        // Kiểm tra dữ liệu người dùng
-        if (username === "" || email === "" || password === "") {
-            alert("Vui lòng nhập đầy đủ thông tin");
-            return;
-        }
-
-        // Chuyển đổi dữ liệu người dùng thành JSON
-        const data = {
-            username: username,
-            email: email,
-            password: password,
-        };
-
-        // Lưu dữ liệu người dùng vào Local Storage
-        localStorage.setItem("data", JSON.stringify(data));  
-     
-        // Thông báo đăng ký thành công
-        alert("Đăng ký thành công");
+    // Kiểm tra dữ liệu người dùng
+    if (username === "" || email === "" || password === "") {
+        alert("Vui lòng nhập đầy đủ thông tin");
+        return;
     }
+
+    // Chuyển đổi dữ liệu người dùng thành JSON
+    const data = {
+        username: username,
+        email: email,
+        password: password,
+    };
+
+    // Lưu dữ liệu người dùng vào Local Storage
+    localStorage.setItem("data", JSON.stringify(data));  
+ 
+    // Thông báo đăng ký thành công
+    alert("Đăng ký thành công");
+}
+ 
+
+//localStorage cho trang đăng nhập xuất thông tin
 
 function login() {
     // Lấy dữ liệu người dùng từ form
-    const username = document.getElementById("#username").value;
-    const password = document.getElementById("#password").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
     // Kiểm tra dữ liệu người dùng
     if (username === "" || password === "") {
