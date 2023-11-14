@@ -7,13 +7,6 @@ const iconclose=document.querySelector('.icon-close');
 
 
 
-var datas = ["ffwi"];
-// Lưu dữ liệu người dùng vào Local Storage
-localStorage.setItem("datas", JSON.stringify(datas));   
-
-
-
-
 //Bấm vào để chuyển qua trang đăng ký
 registerLink.addEventListener('click',()=>{
     wrapper.classList.add('active');
@@ -41,14 +34,12 @@ iconClose.addEventListener('click',()=>{
 
 
 
- //localStorage cho trang đăng ký lưu thông tin
-
-    function signup() {
+ function signup() {
         // Lấy dữ liệu người dùng từ form
-        const username = document.getElementById("#username").value;
-        const email = document.getElementById("#email").value;
-        const password = document.getElementById("#password").value;
-
+        var username = document.getElementById("#username").value;
+        var email = document.getElementById("#email").value;
+        var password = document.getElementById("#password").value;
+        console.log(username);
 
 
         // Kiểm tra dữ liệu người dùng
@@ -60,10 +51,13 @@ iconClose.addEventListener('click',()=>{
         // Chuyển đổi dữ liệu người dùng thành JSON
         const data = {
             username: username,
-            email:email,
+            email: email,
             password: password,
         };
 
+        // Lưu dữ liệu người dùng vào Local Storage
+        localStorage.setItem("data", JSON.stringify(data));  
+     
         // Thông báo đăng ký thành công
         alert("Đăng ký thành công");
     }
