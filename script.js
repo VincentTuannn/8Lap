@@ -5,6 +5,15 @@ const forgotLink=document.querySelector('.ForgotPass-link');
 const btnPopup=document.querySelector('.btnLogin-popup');
 const iconclose=document.querySelector('.icon-close');
 
+
+
+var datas = ["ffwi"];
+// Lưu dữ liệu người dùng vào Local Storage
+localStorage.setItem("datas", JSON.stringify(datas));   
+
+
+
+
 //Bấm vào để chuyển qua trang đăng ký
 registerLink.addEventListener('click',()=>{
     wrapper.classList.add('active');
@@ -32,31 +41,32 @@ iconClose.addEventListener('click',()=>{
 
 
 
- function signup() {
-    // Lấy dữ liệu người dùng từ form
-    var username = document.getElementById("#username").value;
-    var email = document.getElementById("#email").value;
-    var password = document.getElementById("#password").value;
+ //localStorage cho trang đăng ký lưu thông tin
 
-    // Kiểm tra dữ liệu người dùng
-    if (username === "" || email === "" || password === "") {
-        alert("Vui lòng nhập đầy đủ thông tin");
-        return;
+    function signup() {
+        // Lấy dữ liệu người dùng từ form
+        const username = document.getElementById("#username").value;
+        const email = document.getElementById("#email").value;
+        const password = document.getElementById("#password").value;
+
+
+
+        // Kiểm tra dữ liệu người dùng
+        if (username === "" || email === "" || password === "") {
+            alert("Vui lòng nhập đầy đủ thông tin");
+            return;
+        }
+
+        // Chuyển đổi dữ liệu người dùng thành JSON
+        const data = {
+            username: username,
+            email:email,
+            password: password,
+        };
+
+        // Thông báo đăng ký thành công
+        alert("Đăng ký thành công");
     }
-
-    // Lưu dữ liệu người dùng vào Local Storage
-    localStorage.setItem("username", username);
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-    
-
-    // Thông báo đăng ký thành công
-    alert("Đăng ký thành công");
-}
-
-// Tạo form đăng ký
-var signin = document.getElementById("signin");
-signin.addEventListener("submit", register);
 
 function login() {
     // Lấy dữ liệu người dùng từ form
