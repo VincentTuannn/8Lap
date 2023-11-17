@@ -31,25 +31,23 @@ iconclose.addEventListener('click',()=>{
     wrapper.classList.remove('active-popup');
 });
 
-//localStorage cho trang đăng ký lưu thông tin
+//localStorage cho trang đăng ký lưu trữ thông tin
 
 function signup() {
     // Lấy dữ liệu người dùng từ form
-    var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
    
 
 
     // Kiểm tra dữ liệu người dùng
-    if (username === "" || email === "" || password === "") {
+    if (email === "" || password === "") {
         alert("Vui lòng nhập đầy đủ thông tin");
         return;
     }
 
     // Chuyển đổi dữ liệu người dùng thành JSON
     const data = {
-        username: username,
         email: email,
         password: password,
     };
@@ -62,25 +60,25 @@ function signup() {
 }
  
 
-//localStorage cho trang đăng nhập xuất thông tin
+//localStorage cho trang đăng nhập truy xuất thông tin
 
 function login() {
     // Lấy dữ liệu người dùng từ form
-    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
     // Kiểm tra dữ liệu người dùng
-    if (username === "" || password === "") {
+    if (email === "" || password === "") {
         alert("Vui lòng nhập đầy đủ thông tin");
         return;
     }
 
     // Lấy dữ liệu người dùng từ Local Storage
-    const storedUsername = localStorage.getItem("username");
+    const storedEmail = localStorage.getItem("email");
     const storedPassword = localStorage.getItem("password");
 
     // So sánh dữ liệu người dùng
-    if (username === storedUsername && password === storedPassword) {
+    if (email === storedEmail && password === storedPassword) {
         // Đăng nhập thành công
         alert("Đăng nhập thành công");
     } else {
