@@ -102,17 +102,18 @@ function signup()
       var account = [{
         email: email,
         password: password,
-        checkpassword: checkpassword
+        checkpassword: checkpassword,
+        role: 'user'
       }];
       
       // Kiểm tra tài khoản đã nằm trong localStorage chưa
-      var accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+      var accounts = JSON.parse(localStorage.getItem('users')) || [];
 
       //Thêm tài khoản mới vào mảng
       accounts.push(account);
 
       //Lưu tài khoản vào localStorage
-      localStorage.setItem('accounts', JSON.stringify(accounts));
+      localStorage.setItem('users', JSON.stringify(accounts));
   
       
       if(password===checkpassword)
@@ -137,18 +138,6 @@ function signup()
 
 
 
-// Lấy danh sách tài khoản từ Local Storage
-function getStoredAccounts() 
-{
-  try {
-    const storedData = localStorage.getItem("accounts");
-    const accounts = JSON.parse(storedData);
-    return accounts;
-  } catch (error) {
-    alert("Không thể truy xuất được dữ liệu!");
-    return [];
-  }
-}
 
 
 //localStorage cho trang đăng nhập truy xuất thông tin
@@ -156,34 +145,24 @@ function getStoredAccounts()
 function login() 
 {
   // Lấy dữ liệu người dùng từ form
-  const gmail = document.getElementById("gmail").value;
-  const firewall = document.getElementById("firewall").value;
+  var email1 = document.getElementById("gmail").value;
+  var password1 = document.getElementById("firewall").value;
 
-  // Kiểm tra dữ liệu người dùng
-  if (gmail === "" || firewall === "") {
-      alert("Vui lòng nhập đầy đủ thông tin");
-      return;
-  }
 
-  // Lấy dữ liệu người dùng từ Local Storage hoặc một nguồn dữ liệu khác
-  const accounts = getStoredAccounts();
+  // Kiểm tra từ localstorage
+  var users = JSON.parse(localStorage.getItem('users')) || [];
 
+  // Tìm email và mật khẩu trong localstorage
+  var loggedInUser = users.find(user => user.email === email1 && user.password === password1);
+    
   // Kiểm tra từng tài khoản
-  let loggedIn = false;
-  for (const account of accounts) {
-      if (gmail === account.email && firewall === account.password) 
-      {
-          // Đăng nhập thành công
-          alert("Đăng nhập thành công!");
-          console.log(gmail);
-          console.log(firewall);
-          loggedIn = true;
-          break; // Thoát khỏi vòng lặp khi tìm thấy tài khoản khớp
-      }
-  }
-
-  if (!loggedIn) {
-      // Đăng nhập thất bại
+  if (loggedInUser) {
+  
+      alert(`Đăng nhập thành công! Chào mừng ${loggedInUser.role === 'admin' ? 'Admin' : 'Người dùng'}`);
+      console.log(email1);
+      console.log(password1);
+  } else {
+    
       alert("Tài khoản hoặc mật khẩu không chính xác!");
   }
 }
