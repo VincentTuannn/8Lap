@@ -61,6 +61,10 @@ function arePasswordsMatching(password, checkpassword)
 }
 
 
+//Kiểm tra trạng thái đăng nhập
+var isUser = false;
+
+
 //localStorage cho trang đăng ký lưu trữ thông tin
 
 function signup() 
@@ -118,6 +122,10 @@ function signup()
       
       if(password===checkpassword)
       {
+
+      // Đặt trạng thái đăng nhập thành true sau khi đăng ký thành công
+      isUser = true;
+          
       // Hiển thị thông báo thành công
       alert('Tài khoản đã tạo thành công');
       return;
@@ -157,12 +165,28 @@ function login()
     
   // Kiểm tra từng tài khoản
   if (loggedInUser) {
-  
+
+      // Đặt trạng thái đăng nhập thành true sau khi đăng nhập thành công
+      isUser = true;
+      
       alert(`Đăng nhập thành công! Chào mừng ${loggedInUser.role === 'admin' ? 'Admin' : 'Người dùng'}`);
       console.log(email1);
       console.log(password1);
   } else {
     
       alert("Tài khoản hoặc mật khẩu không chính xác!");
+  }
+}
+
+
+//Kiểm tra trạng thái đăng nhập trước khi mua
+function buyProduct() {
+  if (isUser) {
+      // Thực hiện quy trình mua sản phẩm
+      alert('Bạn đã mua sản phẩm thành công!');
+  } else {
+      // Hiển thị thông báo yêu cầu đăng nhập
+      alert('Vui lòng đăng nhập để mua sản phẩm');
+      return;
   }
 }
