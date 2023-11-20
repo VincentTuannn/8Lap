@@ -32,6 +32,12 @@ iconclose.addEventListener('click',()=>{
 });
 
 
+
+
+
+
+
+
 //Kiểm tra tính hợp lệ của email
 function validateEmail(email) 
 {
@@ -53,12 +59,6 @@ function arePasswordsMatching(password, checkpassword)
   // Kiểm tra xem mật khẩu và xác nhận mật khẩu có trùng khớp hay không
   return password === checkpassword;
 }
-
-
-
-
-
-
 
 
 //localStorage cho trang đăng ký lưu trữ thông tin
@@ -129,15 +129,26 @@ function signup()
   } 
 
 
-// Hàm giả định để lấy danh sách tài khoản từ Local Storage
+
+
+
+
+
+
+
+
+// Lấy danh sách tài khoản từ Local Storage
 function getStoredAccounts() 
 {
-  const storedData = localStorage.getItem("accounts");
-  const accounts = JSON.parse(storedData) || [];
-  return accounts;
+  try {
+    const storedData = localStorage.getItem("accounts");
+    const accounts = JSON.parse(storedData);
+    return accounts;
+  } catch (error) {
+    alert("Không thể truy xuất được dữ liệu!");
+    return [];
+  }
 }
-
-
 
 
 //localStorage cho trang đăng nhập truy xuất thông tin
@@ -176,23 +187,3 @@ function login()
       alert("Tài khoản hoặc mật khẩu không chính xác!");
   }
 }
-
-
-
-
-
-/*
-var regex = /^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-if(regex.test(password)) {
-  console.log("Password is valid");
-} else {
-  console.log("Password is invalid");
-} */
-
-
-/* 
-function checkPassword(password) {
- var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
- return regex.test(password);
-}
-*/
