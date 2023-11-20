@@ -32,7 +32,11 @@ iconclose.addEventListener('click',()=>{
 });
 
 
-
+//Kiểm tra tính hợp lệ của email
+function validateEmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email);
+}
 
 
 
@@ -49,7 +53,14 @@ function signup()
 
     // Lấy xác nhận mật khẩu từ input
     var checkpassword = document.getElementById('checkpassword').value;
-  
+
+
+    //Kiểm tra email đã hợp lệ chưa 
+    if (!validateEmail(email)) {
+      alert("Email không hợp lệ");
+      return;
+    }
+    
       // Tạo 1 đối tượng tài khoản mới
       var account = [{
         email: email,
@@ -79,8 +90,6 @@ function signup()
         return;
       }
   } 
-
-
 
 
 // Hàm giả định để lấy danh sách tài khoản từ Local Storage
