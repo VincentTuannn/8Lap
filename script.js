@@ -94,11 +94,8 @@ function signup()
 
 
 // Hàm giả định để lấy danh sách tài khoản từ Local Storage
-function getStoredAccounts() {
-  // Thực tế, bạn có thể lấy dữ liệu từ Local Storage bằng cách sử dụng localStorage.getItem()
-  // Ví dụ: const storedData = localStorage.getItem("accounts");
-  // Sau đó chuyển đổi chuỗi JSON thành mảng đối tượng.
-  // Ở đây, tôi sử dụng một mảng giả định để minh họa.
+function getStoredAccounts() 
+{
   const storedData = localStorage.getItem("accounts");
   const accounts = JSON.parse(storedData) || [];
   return accounts;
