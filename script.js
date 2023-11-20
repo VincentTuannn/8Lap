@@ -39,6 +39,24 @@ function validateEmail(email)
   return regex.test(email);
 }
 
+//Kiểm tra độ mạnh yếu của email
+function checkPassword(password) 
+{
+  var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+  return regex.test(password);
+}
+
+
+//Kiểm tra xác nhận mật khẩu có trùng khớp với mật khẩu khi ở trang đăng ký
+function arePasswordsMatching(password, checkpassword) {
+  // Kiểm tra xem mật khẩu và xác nhận mật khẩu có trùng khớp hay không
+  return password === checkpassword;
+}
+
+
+
+
+
 
 
 
@@ -58,7 +76,22 @@ function signup()
 
     //Kiểm tra email đã hợp lệ chưa 
     if (!validateEmail(email)) {
-      alert("Email không hợp lệ");
+      alert("Email không hợp lệ!");
+      return;
+    }
+
+    //Kiểm tra mật khẩu mạnh hay yếu
+    if (!checkPassword(password))
+    {
+      alert("Mật khẩu của bạn chưa đủ mạnh!");
+      return;
+    }
+
+    //Kiểm tra độ trùng khớp giữa xác nhận mật khẩu và mật khẩu
+    var passwordsMatch = arePasswordsMatching(password, checkpassword);
+
+    if (!passwordsMatch) {
+      alert("Xác nhận mật khẩu chưa chính xác!");
       return;
     }
     
