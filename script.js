@@ -48,7 +48,8 @@ function checkPassword(password)
 
 
 //Kiểm tra xác nhận mật khẩu có trùng khớp với mật khẩu khi ở trang đăng ký
-function arePasswordsMatching(password, checkpassword) {
+function arePasswordsMatching(password, checkpassword) 
+{
   // Kiểm tra xem mật khẩu và xác nhận mật khẩu có trùng khớp hay không
   return password === checkpassword;
 }
@@ -75,7 +76,8 @@ function signup()
 
 
     //Kiểm tra email đã hợp lệ chưa 
-    if (!validateEmail(email)) {
+    if (!validateEmail(email)) 
+    {
       alert("Email không hợp lệ!");
       return;
     }
@@ -90,7 +92,8 @@ function signup()
     //Kiểm tra độ trùng khớp giữa xác nhận mật khẩu và mật khẩu
     var passwordsMatch = arePasswordsMatching(password, checkpassword);
 
-    if (!passwordsMatch) {
+    if (!passwordsMatch) 
+    {
       alert("Xác nhận mật khẩu chưa chính xác!");
       return;
     }
@@ -115,12 +118,12 @@ function signup()
       if(password===checkpassword)
       {
       // Hiển thị thông báo thành công
-      alert('Tài khoản đã tạo thành công.');
+      alert('Tài khoản đã tạo thành công');
       return;
       }
       else
       {
-        alert('Tài khoản đã tạo thất bại.');
+        alert('Tài khoản đã tạo thất bại');
         return;
       }
   } 
@@ -139,7 +142,8 @@ function getStoredAccounts()
 
 //localStorage cho trang đăng nhập truy xuất thông tin
 
-function login() {
+function login() 
+{
   // Lấy dữ liệu người dùng từ form
   const gmail = document.getElementById("gmail").value;
   const firewall = document.getElementById("firewall").value;
@@ -156,9 +160,10 @@ function login() {
   // Kiểm tra từng tài khoản
   let loggedIn = false;
   for (const account of accounts) {
-      if (gmail === account.email && firewall === account.password) {
+      if (gmail === account.email && firewall === account.password) 
+      {
           // Đăng nhập thành công
-          alert("Đăng nhập thành công");
+          alert("Đăng nhập thành công!");
           console.log(gmail);
           console.log(firewall);
           loggedIn = true;
@@ -168,7 +173,7 @@ function login() {
 
   if (!loggedIn) {
       // Đăng nhập thất bại
-      alert("Tài khoản hoặc mật khẩu không chính xác");
+      alert("Tài khoản hoặc mật khẩu không chính xác!");
   }
 }
 
