@@ -586,15 +586,24 @@
             for (let i = 0; i < products.length; i++) {
                 table += `     <div class="item-show">
                             <a href="#">
-                                <div>  <img src="${products[i].image}" alt="Product Image" style="width: 240px; height: 200px;" onclick="buy(${products[i].ID})"> </div> /* Tứn was here */
+                                <div>  <img src="${products[i].image}" alt="Product Image" style="width: 240px; height: 200px;" onclick="buy(${products[i].ID})"> </div> /* Tứn was here */ 
                             </a>
-                            <div class="detail"> /* Tứn was here */
+                            <div class="detail">  /* Tứn was here */
                                 <h3 class="name-product">
                               <a id="name" href="#">${products[i].name}</a>
                                 </h3>
-                             
+                                <div class="technical">
+                                <div class="cpu">CPU:${products[i].CPU}</div>  /* Tứn was here */
+                                <div class="vga">VGA:${products[i].VGA}</div>  /* Tứn was here */
+                                <div class="ram">RAM:${products[i].RAM}</div>  /* Tứn was here */
+                                <div class="ssd">SSD:${products[i].SSD}</div>  /* Tứn was here */
+                                </div>
                                 <div class="price">
-                                    <div class="price--default">${products[i].price}đ</div>               		
+                                    <div class="price--default">${products[i].price}<u>đ</u></div>    
+                                    <div class="price--default">
+                                        <span class="price--highlight">${products[i].price}</span>  /* Tứn was here */
+                                        <span class="label--on-sale">-0%</span>	  /* Tứn was here */		
+                                    </div>           		
                                 </div>
                             </div>
                         </div>    
